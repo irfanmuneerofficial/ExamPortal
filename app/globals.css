@@ -1,0 +1,199 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Punchy, Funky, Student-Friendly Vibrant Light Theme */
+  :root {
+    --background: #F8FAFC;
+    --foreground: #0F172A;
+    --card: #FFFFFF;
+    --card-foreground: #0F172A;
+    --muted: #F1F5F9;
+    --muted-foreground: #64748B;
+    --border: #E2E8F0;
+    --border-dark: #0F172A;
+    --primary: #7C3AED;
+    --primary-foreground: #FFFFFF;
+    --accent: #EDE9FE;
+    --accent-foreground: #6D28D9;
+    --funky-violet: #7C3AED;
+    --funky-pink: #EC4899;
+    --funky-amber: #F59E0B;
+    --funky-emerald: #10B981;
+    --funky-cyan: #06B6D4;
+  }
+
+  /* Vibrant Cyber Student Dark Mode */
+  .dark, [data-theme='dark'] {
+    --background: #0B0F19;
+    --foreground: #F8FAFC;
+    --card: #131B2E;
+    --card-foreground: #F8FAFC;
+    --muted: #1E293B;
+    --muted-foreground: #94A3B8;
+    --border: #243049;
+    --border-dark: #818CF8;
+    --primary: #8B5CF6;
+    --primary-foreground: #FFFFFF;
+    --accent: #2E1065;
+    --accent-foreground: #C4B5FD;
+    --funky-violet: #8B5CF6;
+    --funky-pink: #F43F5E;
+    --funky-amber: #FBBF24;
+    --funky-emerald: #34D399;
+    --funky-cyan: #38BDF8;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background-color: var(--background);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Punchy Candy Hatched Diagonal Stripe Border Bar */
+.hatched-stripe-bar {
+  width: 100%;
+  height: 12px;
+  background: repeating-linear-gradient(
+    -45deg,
+    #7C3AED 0,
+    #7C3AED 12px,
+    #EC4899 12px,
+    #EC4899 24px,
+    #F59E0B 24px,
+    #F59E0B 36px,
+    #10B981 36px,
+    #10B981 48px,
+    #06B6D4 48px,
+    #06B6D4 60px
+  );
+  opacity: 0.95;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Blueprint / Graph Paper Background Grid */
+.bg-blueprint-grid {
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.dark .bg-blueprint-grid {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-foreground);
+}
+
+/* Wireframe Frame & Corner Crosshair Styles */
+.wireframe-container {
+  width: calc(100% - 1.5rem);
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 640px) {
+  .wireframe-container {
+    width: calc(100% - 2.5rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .wireframe-container {
+    width: calc(100% - 3rem);
+  }
+}
+
+.corner-mark-bl {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  width: 7px;
+  height: 7px;
+  transform: translate(-50%, 50%);
+  border: 1px solid var(--border);
+  background-color: var(--background);
+  pointer-events: none;
+}
+
+.corner-mark-br {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 10;
+  width: 7px;
+  height: 7px;
+  transform: translate(50%, 50%);
+  border: 1px solid var(--border);
+  background-color: var(--background);
+  pointer-events: none;
+}
+
+.corner-mark-tl {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 7px;
+  height: 7px;
+  transform: translate(-50%, -50%);
+  border: 1px solid var(--border);
+  background-color: var(--background);
+  pointer-events: none;
+}
+
+.corner-mark-tr {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  width: 7px;
+  height: 7px;
+  transform: translate(50%, -50%);
+  border: 1px solid var(--border);
+  background-color: var(--background);
+  pointer-events: none;
+}
+
+/* Crisp button focus rings */
+.focus-ring {
+  outline: none;
+}
+.focus-ring:focus-visible {
+  outline: 2px solid var(--foreground);
+  outline-offset: 2px;
+}
